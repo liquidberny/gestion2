@@ -8,7 +8,7 @@
     it('Contabilizar la cantidad de elementos en la seccion de pagina principal', function(){
      
         // ingresamos a la pagina
-        cy.visit("http://automationpractice.com/index.php")
+        
      
         //Verificar la cantidad de elementos visibles
         cy.get('#homefeatured .product-container').should('have.length',7)
@@ -21,6 +21,7 @@
     })*/
      
     //Caso de prueba 2
+    /*
     it('Agregar el elemento de tipo "blouse" al carrito de compra desde la pagina principal', function(){
      
          // ingresamos a la pagina
@@ -47,7 +48,8 @@
         })
         cy.get('h2 > .ajax_cart_product_txt').should('contain.text','There is 1 item in your cart.').should('be.visible')
     })
-    //Caso de prueba 3
+    //Caso de prueba 3/
+    
      it('Verificamos que el drop down de women, tenga los elementos necesarios', function(){
         cy.visit("http://automationpractice.com/index.php")
         //flotamos sobre un elementos
@@ -59,5 +61,11 @@
         cy.get('a[title^="Casual"]').should('be.visible')
         cy.get('a[title^="Evening"]').should('be.visible')
         cy.get('a[title^="Summer"]').should('be.visible')   
+    })
+    */
+    it('Verificar que los checkboxes estan funcionando',function(){
+        cy.visit("http://automationpractice.com/index.php")
+        cy.get('.sf-menu > :nth-child(2) > .sf-with-ul').click()
+        cy.get('#ul_layered_category_0 > li:nth-child(1)').click()
     })
 })
