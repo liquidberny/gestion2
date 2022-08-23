@@ -66,6 +66,10 @@
     it('Verificar que los checkboxes estan funcionando',function(){
         cy.visit("http://automationpractice.com/index.php")
         cy.get('.sf-menu > :nth-child(2) > .sf-with-ul').click()
-        cy.get('#ul_layered_category_0 > li:nth-child(1)').click()
+        cy.get('#layered_category_9').check().should('be.checked')
+        cy.get('#layered_category_10').should('not.be.checked')
+        cy.get('#layered_category_11').should('not.be.checked')
     })
+
+
 })
