@@ -62,14 +62,23 @@
         cy.get('a[title^="Evening"]').should('be.visible')
         cy.get('a[title^="Summer"]').should('be.visible')   
     })
-    */
+    //caso 4
     it('Verificar que los checkboxes estan funcionando',function(){
         cy.visit("http://automationpractice.com/index.php")
         cy.get('.sf-menu > :nth-child(2) > .sf-with-ul').click()
         cy.get('#layered_category_9').check().should('be.checked')
         cy.get('#layered_category_10').should('not.be.checked')
         cy.get('#layered_category_11').should('not.be.checked')
+    })*/
+//caso 5
+    it('Verificar que los dropdowns de arreglos esten funcionando',function(){
+        cy.visit("http://automationpractice.com/index.php")
+        cy.get('.sf-menu > :nth-child(2) > .sf-with-ul').click()
+        cy.get('#selectProductSort').select('In stock').should('have.value','quantity:desc')
+      
     })
+
+    
 
 
 })
