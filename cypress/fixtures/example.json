@@ -1,5 +1,21 @@
 {
-  "nombre": "Aaron",
-  "apellido": "Peña"
+  "nombre": "Juan",
+  "apellido": "Torres",
+  "email":"cypress@ateneaconocimientos.net",
+  "sexo": "Male",
+  "telefono": "3333333333",
+  "fechaDeNacimiento":[
+    "December",
+    "1990",
+    "31"
+  ],
+  "Hobbies":[
+    "Sports",
+    "Music"
+  ],
+  "imagen": "my-image.png",
+  "direccion": "algua direccion ficticia",
+  "estado": "NCR",
+  "ciudad": "Delhi"
   
 }

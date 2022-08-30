@@ -15,6 +15,10 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
 
   it("Llenamos nuestro primer formulario utilizando data", function () {
     cy.get('#firstName').type(this.datos.nombre)
+    cy.get('#lastName').type(this.datos.apellido)
+    cy.get('#userEmail').type(this.datos.email)
+    cy.get('input[name="gender"][value='+this.datos.sexo+']').check({force:true})
+    
   });
 
 
