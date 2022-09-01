@@ -23,17 +23,32 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
     cy.get('.react-datepicker__month-select').should('be.visible').select(this.datos.fechaDeNacimiento[0])
     cy.get('.react-datepicker__year-select').should('be.visible').select(this.datos.fechaDeNacimiento[1])
     cy.get('.react-datepicker__day--0'+this.datos.fechaDeNacimiento[2]).click()
+    cy.get('#dateOfBirthInput')
+      .should('contain.value',this.datos.fechaDeNacimiento[0].substring(0,3))
+      .should('contain.value',this.datos.fechaDeNacimiento[1])
+      .should('contain.value',this.datos.fechaDeNacimiento[2])
+      cy.get('.subjects-auto-complete__value-container').type(this.datos.materia)
+      cy.get('div[id^="react-select-"]').click()
+      
+      cy.get('.subjects-auto-complete__value-container').type('Maths')
+      cy.get('div[id^="react-select-"]').click()
+
+      cy.get('.subjects-auto-complete__value-container').should('contains.text',this.datos.materia)
+      
+
+
    /* 
     this.datos.Hobbies[0] = 1
     cy.get('#hobbies-checkbox-'+this.datos.Hobbies[0]).check({force:true}).should('be.checked')
     this.datos.Hobbies[1] = 3
-    cy.get('#hobbies-checkbox-'+this.datos.Hobbies[1]).check({force:true}).should('be.checked')*/
+    cy.get('#hobbies-checkbox-'+this.datos.Hobbies[1]).check({force:true}).should('be.checked')
+
     if(cy.get('#hobbiesWrapper > .col-md-9 > :nth-child(1) > .custom-control-label').contains(this.datos.Hobbies[0])){
       cy.get('#hobbies-checkbox-1').check({force:true}).should('be.checked')
     }
     if(cy.get('#hobbiesWrapper > .col-md-9 > :nth-child(3) > .custom-control-label').contains(this.datos.Hobbies[1])){
-      cy.get('#hobbies-checkbox-3').check().should('be.checked')
-    }
+      cy.get('#hobbies-checkbox-3').check({force:true}).should('be.checked')
+    }*/
 
   });
 
