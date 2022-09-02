@@ -29,9 +29,7 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
       .should('contain.value',this.datos.fechaDeNacimiento[2])
       cy.get('.subjects-auto-complete__value-container').type(this.datos.materia)
       cy.get('div[id^="react-select-"]').click()
-      
-      cy.get('.subjects-auto-complete__value-container').type('Maths')
-      cy.get('div[id^="react-select-"]').click()
+ 
 
       cy.get('.subjects-auto-complete__value-container').should('contains.text',this.datos.materia)
       

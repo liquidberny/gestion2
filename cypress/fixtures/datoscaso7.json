@@ -1,0 +1,15 @@
+{
+    "nombre": "Aaron",
+  "apellido": "Pena",
+  "password":"PruebasGestion2",
+  "username":"PruebasGestion40",
+  "correo":"PruebasGestion40@gmail.com",
+  
+  "sexo": "Male",
+  "telefono":"6623466779",
+  "fechaDeNacimiento":[
+    "Abril",
+    "2001",
+    "10"
+  ]
+}
