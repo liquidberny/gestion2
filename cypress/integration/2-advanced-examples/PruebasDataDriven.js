@@ -6,7 +6,9 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
         //cargaomos los valores del archivo example.json. en un objeto de datos
         cy.fixture('example.json').then(function(datos){
             this.datos=datos
+         cy.fixture(this.datos.imagen).as('imagen')    
         })
+       
     })
   beforeEach(() => {
     //ingresamos a la pagina de formulario
@@ -14,6 +16,7 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
   });
 
   it("Llenamos nuestro primer formulario utilizando data", function () {
+   /*
     cy.get('#firstName').type(this.datos.nombre)
     cy.get('#lastName').type(this.datos.apellido)
     cy.get('#userEmail').type(this.datos.email)
@@ -29,10 +32,32 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
       .should('contain.value',this.datos.fechaDeNacimiento[2])
       cy.get('.subjects-auto-complete__value-container').type(this.datos.materia)
       cy.get('div[id^="react-select-"]').click()
- 
 
-      cy.get('.subjects-auto-complete__value-container').should('contains.text',this.datos.materia)
+    cy.get('.subjects-auto-complete__value-container').should('contains.text',this.datos.materia)
+      if(cy.get('#hobbiesWrapper > .col-md-9 > :nth-child(1) > .custom-control-label').contains(this.datos.Hobbies[0])){
+      cy.get('#hobbies-checkbox-1').check({force:true}).should('be.checked')
+    }
+    if(cy.get('#hobbiesWrapper > .col-md-9 > :nth-child(3) > .custom-control-label').contains(this.datos.Hobbies[1])){
+      cy.get('#hobbies-checkbox-3').check({force:true}).should('be.checked')
+    }
+
+    cy.get('#uploadPicture').then(function($el){
+      //convertir la imagen en un string de base64
+      const blob =Cypress.Blob.base64StringToBlob(this.imagen,'image/png')
+
+      const file = new File([blob],this.datos.imagen,{ type: 'image/png'})
+      const list = new DataTransfer()
       
+      list.items.add(file)
+      const myFileList= list.files
+
+      $el[0].files = myFileList
+      $el[0].dispatchEvent(new Event('change',{ bubbles: true }))
+    })*/
+    cy.get('#currentAddress').type(this.datos.direccion)
+    cy.get('#state').type(this.datos.estado)
+    
+    //cy.get('#city').type(this.datos.ciudad)
 
 
    /* 
@@ -40,13 +65,8 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
     cy.get('#hobbies-checkbox-'+this.datos.Hobbies[0]).check({force:true}).should('be.checked')
     this.datos.Hobbies[1] = 3
     cy.get('#hobbies-checkbox-'+this.datos.Hobbies[1]).check({force:true}).should('be.checked')
-
-    if(cy.get('#hobbiesWrapper > .col-md-9 > :nth-child(1) > .custom-control-label').contains(this.datos.Hobbies[0])){
-      cy.get('#hobbies-checkbox-1').check({force:true}).should('be.checked')
-    }
-    if(cy.get('#hobbiesWrapper > .col-md-9 > :nth-child(3) > .custom-control-label').contains(this.datos.Hobbies[1])){
-      cy.get('#hobbies-checkbox-3').check({force:true}).should('be.checked')
-    }*/
+*/
+    
 
   });
 
