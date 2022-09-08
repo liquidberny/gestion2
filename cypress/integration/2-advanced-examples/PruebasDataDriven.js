@@ -104,6 +104,7 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
     cy.get('td:contains(Picture)+td').should('have.text',this.datos.imagen)
     cy.get('td:contains(Address)+td').should('have.text',this.datos.direccion)
     cy.get('td:contains(State and City)+td').should('have.text',this.datos.estado+" "+this.datos.ciudad)
+    //
 
     /* 
     this.datos.Hobbies[0] = 1
