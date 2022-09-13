@@ -21,16 +21,10 @@ cy.get('@contenedorDeProductos')
     if(producto.includes('E7 Active')){
         cy.log('Se ha encontrado el elemento buscado')
        //cy.wait(5000)
-       //cy.get('@contenedorDeProductos').eq(index).find('a[href^="https://www.amazon.com/PurelySound-E7"]').click({ multiple: true })
-       cy.get("@contenedorDeProductos").each(($el) => {
+       cy.get('@contenedorDeProductos').eq(index).find(':nth-child(2) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img').should('be.visible',{multiple:true}).click({multiple:true})
+       
 
-        $el.click();  // actually no need to wrap as click works in jQuery
-        
-        cy.get('a[href^="https://www.amazon.com/PurelySound-E7"]').should('be.visible');
-        cy.get('a[href^="https://www.amazon.com/PurelySound-E7"]').click();
       
-        cy.get('a[href^="https://www.amazon.com/PurelySound-E7"]').should('not.be.visible');  // wait for modal to go before next click
-      })
         
     }
 })
