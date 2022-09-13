@@ -1,5 +1,6 @@
 describe('Primer examen GCS1 (PARTE 1) ',function(){
-  
+  //Bernardo Urquijo Mungarro
+  //Aaron Peña Camarena
   
     this.beforeEach(()=>{
         //ingresar a la pagina 
@@ -20,15 +21,14 @@ cy.get('@contenedorDeProductos')
     
     if(producto.includes('E7 Active')){
         cy.log('Se ha encontrado el elemento buscado')
-       //cy.wait(5000)
-       cy.get('@contenedorDeProductos').eq(index).find(':nth-child(2) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img').should('be.visible',{multiple:true}).click({multiple:true})
        
-
-      
+       cy.get('@contenedorDeProductos').eq(index).find(':nth-child(2) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img').should('be.visible',{multiple:true}).click({multiple:true})
+     
         
     }
 })
 })
+
         cy.get('#productTitle').should('contain.text','        PurelySound E7 Active Noise Cancelling Headphones, Wireless Over Ear Bluetooth Headphones, 20H Playtime, Rich Deep Bass, Comfortable Memory Foam Ear Cups for Travel, Home Office - Black       ')
         cy.get('.selection').should('contain.text','Black')
         cy.get('#add-to-cart-button-ubb').click()
