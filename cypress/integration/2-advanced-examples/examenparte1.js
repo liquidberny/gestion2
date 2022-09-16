@@ -21,13 +21,11 @@ describe("Primer examen GCS1 (PARTE 1) ", function () {
     )
       .click({ force: true })
       .should("be.checked");
-
     cy.get("[data-testid=grid-deals-container] ").as("contenedorDeProductos");
 
+    ////////////////////////////////////////////////////////////////////////
     cy.get("@contenedorDeProductos").each(($el, index, $list) => {
-      cy.get(
-        ":nth-child(7) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid=deal-card] > :nth-child(5) > .DealContent-module__truncate_sWbxETx42ZPStTc9jwySW"
-      )
+      cy.get(':nth-child(7) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > :nth-child(5) > .DealContent-module__truncate_sWbxETx42ZPStTc9jwySW')
         .eq(index)
         .then(function ($el1) {
           let producto = $el1.text();
@@ -36,24 +34,23 @@ describe("Primer examen GCS1 (PARTE 1) ", function () {
           if (producto.includes(this.datos.electronico1)) {
             cy.log("Se ha encontrado el elemento buscado");
 
-            cy.get("@contenedorDeProductos").eq(index).find(
-                ':nth-child(7) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid=deal-card] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img')
-              .should("be.visible", { multiple: true })
-              .click({ multiple: true });
+            cy.get("@contenedorDeProductos").eq(index).find(':nth-child(7) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img')
+              .should("be.visible").click();
               cy.get("#productTitle").should(
                 "contain.text",
-                "Outdoor Indoor Digital TV Antenna 200+ Miles Long Range with Built-in Amplifier, 33FT Long Coax Cable HDTV Antenna for All Television, for Local Channels 4K HD 1080P VHF UHF"
+                "Bluetooth Earphone Wireless Headphone Sport Earpiece Mini Headset Stereo Sound in Ear IPX5 Waterproof"
               );
              
               cy.get('#add-to-cart-button').click();
               cy.go(-2)   
+              cy.wait(7000)
           }
         });
     });
-
+////////////////////////////////////////////////////////////////////////////
     cy.get("@contenedorDeProductos").each(($el, index, $list) => {
       cy.get(
-        ":nth-child(9) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid=deal-card] > :nth-child(5) > .DealContent-module__truncate_sWbxETx42ZPStTc9jwySW"
+        ":nth-child(14) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid=deal-card] > :nth-child(5) > .DealContent-module__truncate_sWbxETx42ZPStTc9jwySW"
       )
         .eq(index)
         .then(function ($el1) {
@@ -64,21 +61,24 @@ describe("Primer examen GCS1 (PARTE 1) ", function () {
             cy.log("Se ha encontrado el elemento buscado");
 
             cy.get("@contenedorDeProductos").eq(index).find(
-                ':nth-child(9) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img')
-              .should("be.visible", { multiple: true })
-              .click({ multiple: true });
+                ':nth-child(14) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid=deal-card] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img')
+              .should("be.visible").click();
               cy.get("#productTitle").should(
                 "contain.text",
-                "PurelySound E7 Active Noise Cancelling Headphones, Wireless Over Ear Bluetooth Headphones, 20H Playtime, Rich Deep Bass, Comfortable Memory Foam Ear Cups for Travel, Home Office - Black"
+                "2022 Wireless Earbud with Wireless Charging Case Digital LED Display 48hrs Playtime Deep Bass Sport Earphones with Over Earhooks Built in Mic Sweatproof in Ear Headset for Gym "
               );
               cy.get("#add-to-cart-button").click();
-              cy.go(-2)
+             // cy.go(-2)
+             cy.get('#sw-gtc > .a-button-inner > .a-button-text').click()
+             cy.get('#sc-subtotal-label-buybox').should("contain.text", "Subtotal (2 items):");
+             
           }
         });
+        
     });
-
-
     
+
+    /*
     cy.get("@contenedorDeProductos").each(($el, index, $list) => {
       cy.get(
         ":nth-child(15) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid=deal-card] > :nth-child(5) > .DealContent-module__truncate_sWbxETx42ZPStTc9jwySW"
@@ -103,9 +103,8 @@ describe("Primer examen GCS1 (PARTE 1) ", function () {
               cy.go(-2)
           }
         });
-    });
+    });*/
 
-//cy.get("#sw-ptc-form > input[type=hidden] ").should("value", "3");
   });
 
   Cypress.on("uncaught:exception", (err, runnable) => {
