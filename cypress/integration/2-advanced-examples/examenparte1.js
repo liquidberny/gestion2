@@ -17,7 +17,7 @@ describe("Primer examen GCS1 (PARTE 1) ", function () {
     cy.get('[href="/gp/goldbox?ref_=nav_cs_gb"]').click({ force: true });
 
     cy.get(
-      ":nth-child(13) > label > .CheckboxFilter-module__gridFilterCheckbox_9gZBKxneWNZMc30ac9ue7"
+      ":nth-child(14) > label > .CheckboxFilter-module__gridFilterCheckbox_9gZBKxneWNZMc30ac9ue7"
     )
       .click({ force: true })
       .should("be.checked");
@@ -25,7 +25,7 @@ describe("Primer examen GCS1 (PARTE 1) ", function () {
 
     ////////////////////////////////////////////////////////////////////////
     cy.get("@contenedorDeProductos").each(($el, index, $list) => {
-      cy.get(':nth-child(7) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > :nth-child(5) > .DealContent-module__truncate_sWbxETx42ZPStTc9jwySW')
+      cy.get(':nth-child(26) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > :nth-child(5) > .DealContent-module__truncate_sWbxETx42ZPStTc9jwySW')
         .eq(index)
         .then(function ($el1) {
           let producto = $el1.text();
@@ -34,11 +34,11 @@ describe("Primer examen GCS1 (PARTE 1) ", function () {
           if (producto.includes(this.datos.electronico1)) {
             cy.log("Se ha encontrado el elemento buscado");
 
-            cy.get("@contenedorDeProductos").eq(index).find(':nth-child(7) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img')
+            cy.get("@contenedorDeProductos").eq(index).find(':nth-child(26) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img')
               .should("be.visible").click();
               cy.get("#productTitle").should(
                 "contain.text",
-                "Bluetooth Earphone Wireless Headphone Sport Earpiece Mini Headset Stereo Sound in Ear IPX5 Waterproof"
+                "Cleaning Pen Kit Multi-Function Earbuds Cleaning Pen with Soft Brush Portable Phone Cleaner for Earbuds Case Phone Camera Computer"
               );
              
               cy.get('#add-to-cart-button').click();
@@ -50,7 +50,7 @@ describe("Primer examen GCS1 (PARTE 1) ", function () {
 ////////////////////////////////////////////////////////////////////////////
     cy.get("@contenedorDeProductos").each(($el, index, $list) => {
       cy.get(
-        ":nth-child(14) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid=deal-card] > :nth-child(5) > .DealContent-module__truncate_sWbxETx42ZPStTc9jwySW"
+        ":nth-child(23) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid=deal-card] > :nth-child(5) > .DealContent-module__truncate_sWbxETx42ZPStTc9jwySW"
       )
         .eq(index)
         .then(function ($el1) {
@@ -61,7 +61,7 @@ describe("Primer examen GCS1 (PARTE 1) ", function () {
             cy.log("Se ha encontrado el elemento buscado");
 
             cy.get("@contenedorDeProductos").eq(index).find(
-                ':nth-child(14) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid=deal-card] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img')
+                ':nth-child(23) > .DealGridItem-module__dealItemContent_1vFddcq1F8pUxM8dd9FW32 > [data-testid="deal-card"] > .DealCard-module__linkOutlineOffset_2fc037WfeGSjbFp1CAhOUn > .a-row > .a-image-container > img')
               .should("be.visible").click();
               cy.get("#productTitle").should(
                 "contain.text",
