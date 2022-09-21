@@ -22,4 +22,5 @@ describe('Tercer feature de casos avanzados',function(){
     cy.AgregarElementoAlCarrito(this.datos.telefono3)
 
     })
+    
 })
