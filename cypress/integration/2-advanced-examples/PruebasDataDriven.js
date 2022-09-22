@@ -15,9 +15,10 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
   });
 
   it("Llenamos nuestro primer formulario utilizando data", function () {
-    cy.Lista(this.datos);
-
-    /*
+    cy.get("#firstName").type(this.datos.nombre);
+    cy.get("#lastName").type(this.datos.apellido);
+    cy.get("#userEmail").type(this.datos.email);
+    
     cy.get('input[name="gender"][value=' + this.datos.sexo + "]")
       .check({ force: true })
       .should("be.checked");
@@ -94,7 +95,12 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
       .should("contain.text", this.datos.ciudad)
       .click({ force: true });
     
-    cy.get('#example-modal-sizes-title-lg').should('have.text','Thanks for submitting the form')
+      cy.get("#submit").click({ force: true });
+      cy.get('#example-modal-sizes-title-lg').should('have.text','Thanks for submitting the form')
+      cy.get('td:contains(Student Name)+td').should('have.text',this.datos.nombre+" "+this.datos.apellido)
+      cy.Lista(this.datos.email)
+      //cy.Lista(this.datos.sexo)
+/*
     cy.get('td:contains(Student Name)+td').should('have.text',this.datos.nombre+" "+this.datos.apellido)
     cy.get('td:contains(Student Email)+td').should('have.text',this.datos.email)
     cy.get('td:contains(Gender)+td').should('have.text',this.datos.sexo)
@@ -105,9 +111,9 @@ describe("Segundo conjunto de casos de pruebas avanzadas", function () {
     cy.get('td:contains(Picture)+td').should('have.text',this.datos.imagen)
     cy.get('td:contains(Address)+td').should('have.text',this.datos.direccion)
     cy.get('td:contains(State and City)+td').should('have.text',this.datos.estado+" "+this.datos.ciudad)
-    //
-*/
-cy.get("#submit").click({ force: true });
+    */
+
+
     /* 
     this.datos.Hobbies[0] = 1
     cy.get('#hobbies-checkbox-'+this.datos.Hobbies[0]).check({force:true}).should('be.checked')

@@ -62,10 +62,18 @@ Cypress.Commands.add('AgregarVestido',(nombreDeVestido)=>{
    
 })
 //pruebas data driven
-Cypress.Commands.add('Lista',(datos)=>{
-    cy.get("#firstName").type(datos.nombre);
-    cy.get("#lastName").type(nombreLista);
-    cy.get("#userEmail").type(nombreLista);
+Cypress.Commands.add('Lista',(nombreLista)=>{
+   // cy.get('td:contains(Student Name)+td').should('have.text',nombreLista+" "+nombreLista)
+    cy.get('td:contains(Student Email)+td').should('have.text',nombreLista)
+    //cy.get('td:contains(Gender)+td').should('have.text',nombreLista)
+   /* cy.get('td:contains(Mobile)+td').should('have.text',this.datos.telefono)
+    cy.get('td:contains(Date of Birth)+td').should('have.text',this.datos.fechaDeNacimiento[2]+" "+this.datos.fechaDeNacimiento[0]+","+this.datos.fechaDeNacimiento[1])
+    cy.get('td:contains(Subjects)+td').should('have.text',this.datos.materia)
+    cy.get('td:contains(Hobbies)+td').should('have.text',this.datos.Hobbies[0]+", "+this.datos.Hobbies[1])
+    cy.get('td:contains(Picture)+td').should('have.text',this.datos.imagen)
+    cy.get('td:contains(Address)+td').should('have.text',this.datos.direccion)
+    cy.get('td:contains(State and City)+td').should('have.text',this.datos.estado+" "+this.datos.ciudad)*/
+
 })
 
 
