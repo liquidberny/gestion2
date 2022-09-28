@@ -1,12 +1,12 @@
-class ShoppingCartSummary{
+class ShoppingCartSummaryPage{
 getProductName(){
-    cy.get('tr[id^=product]').find('.product-name > a')
+    return  cy.get('tr[id^=product]').find('.product-name > a')
 }
 getProductPriceText(){
-    cy.get('tr[id^=product]').find('.price')
+    return cy.get('tr[id^=product]').find('.price')
 }
 getProceedToCheckoutButton(){
-    cy.get('.cart_navigation > .button')
+    return  cy.get('.cart_navigation > .button')
 }
 }
-export default ShoppingCartSummary;
+export default ShoppingCartSummaryPage;

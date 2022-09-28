@@ -1,6 +1,52 @@
 //Agrega esta linea para agilizar el uso de los metodos correctamente "."
     /// <reference types="Cypress"/>
-     
+     //Importamos Clases de de Page Objects
+     import AddressPage from "../../support/PageObjects/AddressPage"
+     import AuthenticationPage from "../../support/PageObjects/AuthenticationPage"
+     import HomePage from "../../support/PageObjects/homePage"
+     import PaymentPage from "../../support/PageObjects/PaymentPage"
+     import ShippingPage from "../../support/PageObjects/ShippingPage"
+     import ShoppingCartSummaryPage from "../../support/PageObjects/shoppingCartSummaryPage"
+
+describe("Primer conjunto de casos de prueba",function(){
+const addressPage = new AddressPage()
+const authenticationPage = new AuthenticationPage()
+const homePage = new HomePage()
+const paymentPage = new PaymentPage()
+const shippingPage = new ShippingPage()
+const shoppingCartSummaryPage = new ShoppingCartSummaryPage()
+
+
+
+//caso 6
+
+it('Crear una compra desde cero',function(){
+    homePage.getSearchBoxInput().type('Blouse')
+    homePage.getSearchBoxButton().click()
+    homePage.getAddToCardElementButton("Blouse").click()
+    homePage.getProceedToCheckoutButton().click()
+
+    shoppingCartSummaryPage.getProductNameText().should('contaon.text','Blouse')
+    shoppingCartSummaryPage.getProductPriceText().should('contaon.text','27.00')
+    shoppingCartSummaryPage.getProceedToCheckoutButton().click()
+
+    authenticationPage.getEmailAddressInput().type('cypress@ateneaconociminetos.net')
+    authenticationPage.getPasswordInput().type('Atenea')
+    authenticationPage.getSingInButton().click()
+
+    addressPage.getProceedToCheckoutButton().click()
+
+    shippingPage.getTermsOfServiceCheckbox().check().should('be.checked')
+    shippingPage.getProceedToCheckoutButton().click()
+
+    paymentPage.getPayByBankWireOptionButton().click()
+    paymentPage.getIconfirmMyOrderButton().click()
+    paymentPage.getDescriptionTitleText().should('contain.text','Your order on My Store is complete.')
+})
+
+})
+
+  /*
     //Suite de casos que contiene cada caso
     describe('Primer conjunto de casos de prueba',function()
     {
@@ -15,6 +61,7 @@
             //ingresar a la pagina de compra de articulos tecnologicos
             cy.visit("http://automationpractice.com/index.php")
         })
+
    /* //Caso de prueba 1
     it('Contabilizar la cantidad de elementos en la seccion de pagina principal', function(){
      
@@ -29,7 +76,7 @@
      
         //Verificamos nuevamente la cantidad de elementos utilizando el parametro
         cy.get('@ProductosPopulares').should('have.length',7)
-    })*/
+    })
      
     //Caso de prueba 2
     
@@ -38,7 +85,7 @@
         cy.AgregarVestido(this.datos.vestido1)
         cy.AgregarVestido(this.datos.vestido2)
         cy.get('[title="View my shopping cart"] > .ajax_cart_quantity').contains(2)
-    })
+    })*/
     /*
     //Caso de prueba 3/
     
@@ -71,8 +118,10 @@
         cy.get('#selectProductSort').select('In stock').should('have.value','quantity:desc')
       
     })
+
+    //caso 6
 */
     
 
 
-})
+//})

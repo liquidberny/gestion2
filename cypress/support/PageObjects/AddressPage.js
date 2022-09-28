@@ -1,6 +1,6 @@
 class AddressPage{
     getProceedToCheckoutButton(){
-        cy.get('.cart_navigation > .button')
+        return cy.get('.cart_navigation > .button')
     }
 
 }
