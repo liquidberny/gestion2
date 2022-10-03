@@ -3,10 +3,10 @@
      //Importamos Clases de de Page Objects
      import AddressPage from "../../support/PageObjects/AddressPage"
      import AuthenticationPage from "../../support/PageObjects/AuthenticationPage"
-     import HomePage from "../../support/PageObjects/homePage"
+     import HomePage from "../../support/PageObjects/HomePage"
      import PaymentPage from "../../support/PageObjects/PaymentPage"
      import ShippingPage from "../../support/PageObjects/ShippingPage"
-     import ShoppingCartSummaryPage from "../../support/PageObjects/shoppingCartSummaryPage"
+     import ShoppingCartSummaryPage from "../../support/PageObjects/ShoppingCartSummaryPage"
 
 describe("Primer conjunto de casos de prueba",function(){
 const addressPage = new AddressPage()
