@@ -23,7 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
+/*
 Cypress.Commands.add('AgregarElementoAlCarrito',(nombreDeProducto)=>{
     cy.get("div[class='product-thumb']").as('contenedorDeProductos')
     cy.get('@contenedorDeProductos')
@@ -72,8 +72,7 @@ Cypress.Commands.add('Lista',(nombreLista)=>{
     cy.get('td:contains(Hobbies)+td').should('have.text',this.datos.Hobbies[0]+", "+this.datos.Hobbies[1])
     cy.get('td:contains(Picture)+td').should('have.text',this.datos.imagen)
     cy.get('td:contains(Address)+td').should('have.text',this.datos.direccion)
-    cy.get('td:contains(State and City)+td').should('have.text',this.datos.estado+" "+this.datos.ciudad)*/
+    cy.get('td:contains(State and City)+td').should('have.text',this.datos.estado+" "+this.datos.ciudad)
 
 })
-
-
+*/
