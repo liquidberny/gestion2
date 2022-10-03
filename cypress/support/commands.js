@@ -24,56 +24,116 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('AgregarElementoAlCarrito',(nombreDeProducto)=>{
-    cy.get("div[class='product-thumb']").as('contenedorDeProductos')
-    cy.get('@contenedorDeProductos')
-    .each(($el,index, $list) => {
-        cy.get(':has(.description) h4 a').eq(index).then(function($el1){
-           let producto= $el1.text()
-            cy.log(producto)
-        
-        if(producto.includes(nombreDeProducto)){
-            cy.log('Se ha encontrado el elemento buscado')
-           
-            cy.get('@contenedorDeProductos').eq(index).find("button[aria-label='Add to Cart']").click()
+
+
+
+
+
+
+
+
+
+//Importamos Clases de Page Objects
+/*
+import AddressPage from '../support/PageObjects/AddressPage'
+import AuthenticationPage from '../support/PageObjects/AuthenticationPage'
+import HomePage from '../support/PageObjects/HomePage'
+import PaymentPage from '../support/PageObjects/PaymentPage'
+import ShippingPage from '../support/PageObjects/ShippingPage'
+import ShoppingCartSummaryPage from '../support/PageObjects/ShoppingCartSummaryPage'
+
+const addressPage = new AddressPage()
+const authenticationPage = new AuthenticationPage()
+const homePage = new HomePage()
+const paymentPage = new PaymentPage()
+const shippingPage = new ShippingPage()
+const shoppingSummaryCart = new ShoppingCartSummaryPage()
+
+Cypress.Commands.add("agregarElementoAlCarrito", (nombreDeProducto) => {
+    cy.get('div[class="product-thumb"]').as('contenedorDeProductos')
+
+        //Recorremos la variable de contenedorDeProductos
+        cy.get('@contenedorDeProductos').each(($el,index,$list) => {
+            
+            //recorremos la lista en la parte de a
+            cy.get(":has(.content a)").eq(index).then(function ($el1) {
+                let producto = $el1.text()
+                cy.log(producto)
+
+                //verificamos que la etiqueta tenga el nombre dado
+                if(producto.includes(nombreDeProducto)){
+                    cy.log("se ha encontrado el elemento buscado")
+                    cy.get('@contenedorDeProductos').eq(index).find('button[aria-label="Add to Cart"]').click()
+                }
+            })
+            
+        })
+})
+
+Cypress.Commands.add("marcarMultipleCheckBox",(elemento1,elemento2) =>{
+    cy.get('div[id="hobbiesWrapper"] input').as('checkboxes')
+        cy.get('div[id="hobbiesWrapper"] label').each(($el,index,$list) => {
+            cy.log($el.text())
+            //Comprobamos el titulo y el precio del producto
+            if($el.text().includes(elemento1) || $el.text().includes(elemento2)){
+                cy.log("Se ha encontrado el elemento buscado")
+                cy.log("Se ha encontrado el precio buscado")
+                //Cuando se encuentre en el indece se dara clic en el boton de añadir al carrito
+                cy.get('@checkboxes').eq(index - 1).click({force: true})
             }
         })
-    })
-})
-// primeras pruebas
-Cypress.Commands.add('AgregarVestido',(nombreDeVestido)=>{
-    cy.get('#homefeatured .product-container').as('ProductosPopulares')
-    cy.get('@ProductosPopulares')
-    .find('.product-name')
-    .each(($el,index, $list) => {
-        cy.get('@ProductosPopulares').eq(index).find('.price').then(function($el1){
-            let precio = $el1.text()
-            cy.log(precio)
-        
-        if($el.attr('title') === nombreDeVestido ){
-            cy.log('Se ha encontrado el elemento buscado')
-            cy.log('Se ha encontrado el precio buscado')
-            cy.get('@ProductosPopulares').eq(index).contains('Add to cart').click()
-           cy.wait(4000)
-            cy.get('.continue > span').click()
-        }
-    })
-    })
-   
-})
-//pruebas data driven
-Cypress.Commands.add('Lista',(nombreLista)=>{
-   // cy.get('td:contains(Student Name)+td').should('have.text',nombreLista+" "+nombreLista)
-    cy.get('td:contains(Student Email)+td').should('have.text',nombreLista)
-    //cy.get('td:contains(Gender)+td').should('have.text',nombreLista)
-   /* cy.get('td:contains(Mobile)+td').should('have.text',this.datos.telefono)
-    cy.get('td:contains(Date of Birth)+td').should('have.text',this.datos.fechaDeNacimiento[2]+" "+this.datos.fechaDeNacimiento[0]+","+this.datos.fechaDeNacimiento[1])
-    cy.get('td:contains(Subjects)+td').should('have.text',this.datos.materia)
-    cy.get('td:contains(Hobbies)+td').should('have.text',this.datos.Hobbies[0]+", "+this.datos.Hobbies[1])
-    cy.get('td:contains(Picture)+td').should('have.text',this.datos.imagen)
-    cy.get('td:contains(Address)+td').should('have.text',this.datos.direccion)
-    cy.get('td:contains(State and City)+td').should('have.text',this.datos.estado+" "+this.datos.ciudad)*/
-
 })
 
+Cypress.Commands.add("iniciarSesion", (data) =>{
+    cy.get('#email').type(data.email)
+    cy.get('#passwd').type(data.contrasena)
+    cy.wait(10000)
+    cy.get('#SubmitLogin').click()
+})
 
+Cypress.Commands.add("entrarPagina", () => {
+    cy.visit("http://automationpractice.com/index.php")
+})
+
+Cypress.Commands.add("buscarArticulo", () => {
+    homePage.getSearchBox().type('Blouse')
+    homePage.getSearchBoxButton().click()
+})
+
+Cypress.Commands.add("agregarAlCarrito", () => {
+    cy.wait(5000)
+    homePage.getAddToCardElementButton("Blouse").click()
+    cy.wait(5000)
+    homePage.getProceedToCheckoutButton().click({force: true})
+})
+
+Cypress.Commands.add("verificarPrecio", () => {
+    shoppingSummaryCart.getProductNameText().should('contain.text', 'Blouse')
+    shoppingSummaryCart.getProductPriceText().should('containt.text', '27.00')
+})
+
+Cypress.Commands.add("finalizaCompra", () => {
+    shoppingSummaryCart.getProceedToCheckoutButton().click()
+
+    authenticationPage.getEmailAddressInput().type('cypress@ateneaconocimientos.net')
+    authenticationPage.getPasswordInput().type('Atenea')
+    authenticationPage.getSignInButton().click()
+
+    addressPage.getProceedToCheckoutButton().click()
+
+    shippingPage.getTermsOfServiceCheckbox().check().should('be.checked')
+    shippingPage.getProceedToCheckoutButton().click()
+
+    paymentPage.getPayByBankWireOptionButton().click()
+    paymentPage.getIConfirmMyOrderButton().click()
+})
+
+Cypress.Commands.add("verificarPrecio", () => {
+    shoppingSummaryCart.getProductNameText().should('contain.text', 'Blouse')
+    shoppingSummaryCart.getProductPriceText().should('containt.text', '27.00')
+})
+
+Cypress.Commands.add("verificarOrden", () => {
+    paymentPage.getDescriptionTitleText().should('contain.text', 'Your order on My Store is complete')
+})
+*/

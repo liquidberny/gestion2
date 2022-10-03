@@ -16,21 +16,28 @@ const paymentPage = new PaymentPage()
 const shippingPage = new ShippingPage()
 const shoppingCartSummaryPage = new ShoppingCartSummaryPage()
 
+this.beforeEach(()=>{
+    cy.visit("http://automationpractice.com/index.php")
+})
 
+//
 
 //caso 6
 
 it('Crear una compra desde cero',function(){
+    
     homePage.getSearchBoxInput().type('Blouse')
     homePage.getSearchBoxButton().click()
+    cy.wait(5000)
     homePage.getAddToCardElementButton("Blouse").click()
     homePage.getProceedToCheckoutButton().click()
+    
 
-    shoppingCartSummaryPage.getProductNameText().should('contaon.text','Blouse')
-    shoppingCartSummaryPage.getProductPriceText().should('contaon.text','27.00')
+    shoppingCartSummaryPage.getProductNameText().should('contains.text','Blouse')
+    shoppingCartSummaryPage.getProductPriceText().should('contains.text','27.00')
     shoppingCartSummaryPage.getProceedToCheckoutButton().click()
 
-    authenticationPage.getEmailAddressInput().type('cypress@ateneaconociminetos.net')
+    authenticationPage.getEmailAddressInput().type('cypress@ateneaconocimientos.net')
     authenticationPage.getPasswordInput().type('Atenea')
     authenticationPage.getSingInButton().click()
 
@@ -41,7 +48,7 @@ it('Crear una compra desde cero',function(){
 
     paymentPage.getPayByBankWireOptionButton().click()
     paymentPage.getIconfirmMyOrderButton().click()
-    paymentPage.getDescriptionTitleText().should('contain.text','Your order on My Store is complete.')
+    paymentPage.getDescriptionTitleText().should('contains.text','Your order on My Store is complete.')
 })
 
 })

@@ -2,21 +2,20 @@
   "nombre": "Juan",
   "apellido": "Torres",
   "email":"cypress@ateneaconocimientos.net",
-  "sexo": "Male",
-  "telefono": "3333333333",
-  "fechaDeNacimiento":[
+  "sexo":"Male",
+  "telefono":"3333333333",
+  "fechaDeNacimiento": [
     "December",
     "1990",
     "31"
   ],
-  "materia":"English",
-  "Hobbies":[
+  "materia": "English",
+  "hobbies": [
     "Sports",
     "Music"
   ],
-  "imagen": "my-image.png",
-  "direccion": "algua direccion ficticia",
-  "estado": "NCR",
-  "ciudad": "Delhi"
-  
+  "imagen":"my-image.png",
+  "direccion":"Calle paleta #1",
+  "estado":"NCR",
+  "ciudad":"Delhi"
 }

@@ -1,18 +1,21 @@
 {
   "name": "automatizacion",
   "version": "1.0.0",
-  "description": "Primer proyecto aprendiendo automatizar Cypress",
+  "description": "primer proyecto aprendiendo automatizar Cypress",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "testChrome": "npm run test -- --browser chrome",
   "author": "Aaron Peña Camarena",
   "license": "ISC",
-  "cypress-cucumber-preproccesor":{
-    "nomGlobalStepDefinitions":true
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   },
   "devDependencies": {
-    "cypress": "^9.5.4",
+    "@types/cypress-cucumber-preprocessor": "^4.0.1",
+    "cypress": "^9.6.0",
     "cypress-cucumber-preprocessor": "^4.3.1"
   }
 }

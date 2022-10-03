@@ -1,0 +1,16 @@
+{
+    "nombre": "Juan",
+    "apellido": "caballo",
+    "email":"cypress@patatas.net",
+    "sexo":"Male",
+    "telefono":"8888888888",
+    "fechaDeNacimiento": [
+      "September",
+      "2000",
+      "15"
+    ],
+    "hobbies": [
+        "Gaming",
+        "Art"
+    ]
+}
