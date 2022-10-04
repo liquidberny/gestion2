@@ -8,8 +8,8 @@
   },
   "author": "Aaron Peña Camarena",
   "license": "ISC",
-  "cypress-cucumber-preproccesor":{
-    "nomGlobalStepDefinitions":true
+  "cypress-cucumber-preprocessor":{
+    "nonGlobalStepDefinitions":true
   },
   "devDependencies": {
     "cypress": "^9.5.4",

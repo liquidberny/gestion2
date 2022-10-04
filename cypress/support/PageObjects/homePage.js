@@ -1,6 +1,6 @@
 class HomePage
 {
-    getSearchBox()
+    getSearchBoxInput()
     {
         return cy.get('#search_query_top')
     }
@@ -10,7 +10,7 @@ class HomePage
     }
     getAddToCardElementButton()
     {
-        return cy.get('.product-container:has(.product-name[title="'+productDescription+'"]) .ajax_add_to_cart_button') 
+        return cy.get('.product-container:has(.product-name[title="Blouse"]) .ajax_add_to_cart_button') 
     }
     getProceedToCheckoutButton()
     {
