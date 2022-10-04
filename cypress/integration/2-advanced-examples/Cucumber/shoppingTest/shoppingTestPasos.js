@@ -36,7 +36,7 @@ When('finaliza la compra de los articulos', () =>{
     authenticationPage.getEmailAddressInput().type('cypress@ateneaconocimientos.net')
     authenticationPage.getPasswordInput().type('Atenea')
     authenticationPage.getSingInButton().click()
-    cy.wait(3000)
+
     addressPage.getProceedToCheckoutButton().click()
 
     shippingPage.getTermsOfServiceCheckbox().check().should('be.checked')
