@@ -9,7 +9,7 @@ const amazondeals = new AmazonDeals()
 const amazonproducto = new AmazonProducto()
 const amazoncheckout = new AmazonCheckout()
 
-Given('el usuario se encuentra en la pagina de amazon',  () => {
+Given('el usuario se encuentra en la pagina de amazon',() => {
     cy.visit('http://www.amazon.com');
 })
 Then('entra a la seccion de Todays deals',()=>{
@@ -19,12 +19,13 @@ And('selecciona el checkbox de audifonos',()=>{
     amazondeals.getHeadphonesCheckbox().click({ force: true });
     
 })
-Then ('selecciona los audifonos',()=>{
-amazondeals.getProductoButton().should('be.visible').click();
+Then('selecciona los audifonos',()=>{
+    amazondeals.getProductoButton().should('be.visible').click();
 })
-And ('agrega los audifonos al carrete',()=>{
-amazonproducto.getAddToCartButton().click();
+And('agrega los audifonos al carrete',()=>{
+    amazonproducto.getAddToCartButton().click();
 })
-Then ('verifica que haya un producto en el carrete',()=>{
-amazoncheckout.getItemCount.should("contain.text", "Subtotal (1 item):");
+Then('verifica que haya un producto en el carrete',()=>{
+    amazoncheckout.getProceedToCheckoutButton().click();
+    amazoncheckout.getItemCount().should("contain.text", "Subtotal (1 item):");
 })
