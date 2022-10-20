@@ -10,6 +10,7 @@
 // ***********************************************************
 
 const cucumber = require('cypress-cucumber-preprocessor').default
+const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
