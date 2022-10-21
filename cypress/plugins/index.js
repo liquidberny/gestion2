@@ -10,7 +10,8 @@
 // ***********************************************************
 
 const cucumber = require('cypress-cucumber-preprocessor').default
-const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
+//const { lighthouse, pa11y, prepareAudit } = require("cypress-audit");
+const { lighthouse, prepareAudit } = require('@cypress-audit/lighthouse');
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
@@ -22,8 +23,17 @@ module.exports = (on, config) => {
   on('file:preprocessor',cucumber())
   const getCompareSnapshotsPlugin = require('cypress-image-diff-js/dist/plugin')
 getCompareSnapshotsPlugin(on, config)
+on('before:browser:launch', (browser = {}, launchOptions) => {
+  prepareAudit(launchOptions)
+})
+
+on('task', {
+  lighthouse: lighthouse(), // calling the function is important
+});
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 }
+
+
 
 

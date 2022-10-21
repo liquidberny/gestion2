@@ -14,9 +14,12 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+//import './commands'
+import '@cypress-audit/lighthouse/commands';
+
 import './commands'
-after(() => {
-    cy.task('generateReport')
-    })
+after(() => {cy.task('generateReport')})
+
+   
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

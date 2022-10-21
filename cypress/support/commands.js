@@ -26,6 +26,8 @@
 const compareSnapshotCommand = require('cypress-image-diff-js/dist/command')
 compareSnapshotCommand()
 
+import "@cypress-audit/lighthouse/commands";
+
 Cypress.Commands.add('AgregarElementoAlCarrito',(nombreDeProducto)=>{
     cy.get("div[class='product-thumb']").as('contenedorDeProductos')
     cy.get('@contenedorDeProductos')
