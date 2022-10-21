@@ -15,6 +15,8 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-
+after(() => {
+    cy.task('generateReport')
+    })
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
